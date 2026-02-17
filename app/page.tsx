@@ -111,7 +111,7 @@ export default function Home() {
                     <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-2xl shadow-slate-400/30 backdrop-blur-lg">
                         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
                             <div className="space-y-6 max-w-2xl">
-                                <p className="text-xs uppercase tracking-[0.5em] text-slate-500">Traders · Wallet</p>
+                                <p className="text-xs uppercase tracking-widest text-slate-500">Traders · Wallet</p>
                                 <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
                                     Word Wallet Command Center
                                 </h1>
@@ -131,14 +131,14 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            <div className="grid w-full gap-4 sm:grid-cols-3 lg:w-auto">
+                            <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:w-auto">
                                 {highlightStats.map((stat) => (
                                     <div
                                         key={stat.label}
-                                        className="floating-card flex min-h-[170px] flex-col justify-between rounded-2xl border border-slate-200 bg-white/70 p-5 shadow-xl shadow-slate-200 transition hover:-translate-y-1"
+                                        className="floating-card flex min-h-[140px] flex-col justify-between rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-xl shadow-slate-200 transition hover:-translate-y-1"
                                     >
                                         <div>
-                                            <p className="text-xs uppercase tracking-[0.4em] text-slate-500">{stat.label}</p>
+                                            <p className="text-[10px] uppercase tracking-wider text-slate-500">{stat.label}</p>
                                             <p className="mt-3 text-3xl font-semibold text-slate-900">{stat.value}</p>
                                         </div>
                                         <p className="text-xs text-slate-500">{stat.detail}</p>
@@ -159,7 +159,7 @@ export default function Home() {
                                         key={slide.title}
                                         className="min-w-full rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg shadow-slate-200"
                                     >
-                                        <p className="text-xs uppercase tracking-[0.5em] text-slate-400">{slide.metric}</p>
+                                        <p className="text-xs uppercase tracking-widest text-slate-400">{slide.metric}</p>
                                         <h3 className="mt-4 text-2xl font-semibold text-slate-900">{slide.title}</h3>
                                         <p className="mt-3 text-sm text-slate-500">{slide.description}</p>
                                         <button
@@ -176,20 +176,19 @@ export default function Home() {
                                     <button
                                         key={idx}
                                         onClick={() => setActiveSlide(idx)}
-                                        className={`h-2 w-8 rounded-full transition-all ${
-                                            idx === activeSlide ? "bg-slate-900" : "bg-slate-300/80"
-                                        }`}
+                                        className={`h-2 w-8 rounded-full transition-all ${idx === activeSlide ? "bg-slate-900" : "bg-slate-300/80"
+                                            }`}
                                     />
                                 ))}
                             </div>
                         </div>
                     </section>
 
-                    <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[280px_1fr]">
+                    <div className={`mx-auto grid w-full max-w-6xl gap-6 ${showTraderPanel ? "lg:grid-cols-[280px_1fr]" : ""}`}>
                         {showTraderPanel && (
                             <aside className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-lg shadow-slate-200">
                                 <div className="mb-6 flex items-center justify-between">
-                                    <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Sub-menu Traders</p>
+                                    <p className="text-sm uppercase tracking-widest text-slate-500">Sub-menu Traders</p>
                                     <span className="text-xs text-emerald-500">Live</span>
                                 </div>
                                 <div className="space-y-3">
@@ -197,14 +196,13 @@ export default function Home() {
                                         <button
                                             key={item.label}
                                             onClick={() => setActiveSidebar(item.label)}
-                                            className={`flex w-full items-center justify-between rounded-2xl border p-3 text-sm font-semibold transition ${
-                                                item.label === activeSidebar
-                                                    ? "border-slate-400 bg-slate-100 text-slate-900 shadow-inner"
-                                                    : "border-slate-100 text-slate-500 hover:border-slate-300 hover:text-slate-900"
-                                            }`}
+                                            className={`flex w-full items-center justify-between rounded-2xl border p-3 text-sm font-semibold transition ${item.label === activeSidebar
+                                                ? "border-slate-400 bg-slate-100 text-slate-900 shadow-inner"
+                                                : "border-slate-100 text-slate-500 hover:border-slate-300 hover:text-slate-900"
+                                                }`}
                                         >
                                             <span>{item.label}</span>
-                                            <span className="text-[10px] uppercase tracking-[0.35em] text-slate-400">
+                                            <span className="text-[10px] uppercase tracking-widest text-slate-400">
                                                 {item.status}
                                             </span>
                                         </button>
@@ -214,14 +212,14 @@ export default function Home() {
                         )}
 
                         <section className="space-y-6 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-xl shadow-slate-300">
-                            <div className="grid gap-6 md:grid-cols-3">
+                            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                                 {walletCards.map((card) => (
                                     <div
                                         key={card.title}
                                         className="flex min-h-[220px] flex-col justify-between rounded-2xl border border-slate-100 bg-gradient-to-b from-white to-slate-50 p-5 shadow-sm transition hover:-translate-y-1"
                                     >
                                         <div className="flex items-center justify-between text-slate-500">
-                                            <span className="text-xs uppercase tracking-[0.3em]">{card.title}</span>
+                                            <span className="text-xs uppercase tracking-widest">{card.title}</span>
                                             {card.icon}
                                         </div>
                                         <div>
@@ -237,7 +235,7 @@ export default function Home() {
                                 <div className="space-y-6 rounded-2xl border border-slate-100 bg-slate-50/80 p-5 shadow-inner">
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <p className="text-xs uppercase tracking-[0.5em] text-slate-500">Word Wallet</p>
+                                            <p className="text-xs uppercase tracking-widest text-slate-500">Word Wallet</p>
                                             <p className="text-lg font-semibold text-slate-900">Focus: {activeSidebar}</p>
                                         </div>
                                         <span className="text-xs text-emerald-500">Synced</span>
@@ -251,7 +249,7 @@ export default function Home() {
                                         ))}
                                     </div>
                                     <div>
-                                        <p className="text-xs uppercase tracking-[0.4em] text-slate-500">Wallet Flow</p>
+                                        <p className="text-xs uppercase tracking-widest text-slate-500">Wallet Flow</p>
                                         <div className="mt-3 h-2 rounded-full bg-slate-200">
                                             <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-sky-500 to-emerald-500" />
                                         </div>
@@ -263,13 +261,13 @@ export default function Home() {
 
                                 <div className="space-y-4">
                                     <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
-                                        <p className="text-xs uppercase tracking-[0.4em] text-slate-500">Activity Feed</p>
+                                        <p className="text-xs uppercase tracking-widest text-slate-500">Activity Feed</p>
                                         <div className="mt-4 space-y-4">
                                             {activityFeed.map((item) => (
                                                 <div key={item.title} className="rounded-2xl bg-slate-50 p-4 shadow-inner">
                                                     <div className="flex items-center justify-between text-sm text-slate-500">
                                                         <p className="font-semibold text-slate-900">{item.title}</p>
-                                                        <span className="text-[10px] uppercase tracking-[0.35em]">
+                                                        <span className="text-[10px] uppercase tracking-widest">
                                                             {item.time}
                                                         </span>
                                                     </div>
@@ -280,7 +278,7 @@ export default function Home() {
                                     </div>
 
                                     <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50 p-5 text-slate-600 shadow-sm">
-                                        <p className="text-xs uppercase tracking-[0.4em] text-slate-500">Reserve</p>
+                                        <p className="text-xs uppercase tracking-widest text-slate-500">Reserve</p>
                                         <p className="mt-2 text-lg font-semibold text-slate-900">Word Wallet · Vault 04</p>
                                         <p className="mt-2 text-sm text-slate-500">
                                             Cadangan komunitas siap mendukung trader, wordsmith, dan moderator reputasi.

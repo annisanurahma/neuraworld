@@ -309,6 +309,101 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Documentation Section */}
+            <section id="docs" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D] relative z-10">
+                <div className="mx-auto max-w-7xl">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                            System <span className="text-[#E491C9]">Documentation</span>
+                        </h2>
+                        <p className="text-slate-400">Master the neural interface with these commands details.</p>
+                    </div>
+
+                    <div className="grid lg:grid-cols-2 gap-12">
+                        {/* Core Commands */}
+                        <div className="bg-[#1A1D4D] rounded-2xl p-8 border border-[#982598]/20">
+                            <div className="flex items-center gap-3 mb-6">
+                                <Terminal className="w-6 h-6 text-[#E491C9]" />
+                                <h3 className="text-xl font-bold text-white">Core Commands</h3>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="group">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#E491C9] border border-[#982598]/30 group-hover:bg-[#E491C9] group-hover:text-[#15173D] transition-colors">npm run neura-agent</code>
+                                        <span className="text-xs text-slate-500 font-mono">INIT</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm">Launches the NeuraAgent Text User Interface (TUI). This is your main entry point.</p>
+                                </div>
+                                <div className="h-px bg-[#982598]/10" />
+                                <div className="group">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#00F0FF] border border-[#00F0FF]/30">Login</code>
+                                        <span className="text-xs text-slate-500 font-mono">AUTH</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm">Interactive login via Email or API Key. Supports automatic `bankr login` wrapping.</p>
+                                </div>
+                                <div className="h-px bg-[#982598]/10" />
+                                <div className="group">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#982598] border border-[#982598]/30">Prompt Agent</code>
+                                        <span className="text-xs text-slate-500 font-mono">ACTION</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm">Opens the Neural Link chat interface. Choose between "Quick Query" (single) or "Neural Link" (conversation).</p>
+                                </div>
+                                <div className="h-px bg-[#982598]/10" />
+                                <div className="group">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <code className="px-3 py-1 bg-[#0a0b1e] rounded text-slate-300 border border-slate-600">Status Checks</code>
+                                        <span className="text-xs text-slate-500 font-mono">INFO</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm">Wraps `bankr whoami` to display current user identity and system connection status.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Configuration & Troubleshooting */}
+                        <div className="space-y-8">
+                            {/* Config */}
+                            <div className="bg-[#1A1D4D] rounded-2xl p-8 border border-[#982598]/20 h-fit">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <Cpu className="w-6 h-6 text-[#00F0FF]" />
+                                    <h3 className="text-xl font-bold text-white">Configuration</h3>
+                                </div>
+                                <div className="space-y-4 text-sm text-slate-300">
+                                    <p>
+                                        NeuraAgent inherits configuration from the base <code className="text-[#E491C9]">bankr</code> CLI.
+                                        Ensure your environment is set up correctly.
+                                    </p>
+                                    <div className="bg-[#0a0b1e] p-4 rounded-lg font-mono text-xs border border-[#982598]/10 overflow-x-auto text-slate-300">
+                                        # .env or global config<br />
+                                        BANKR_API_KEY=sk_...<br />
+                                        BANKR_REGION=us-east-1
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Troubleshooting */}
+                            <div className="bg-[#1A1D4D] rounded-2xl p-8 border border-[#982598]/20 h-fit">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <Shield className="w-6 h-6 text-[#982598]" />
+                                    <h3 className="text-xl font-bold text-white">Troubleshooting</h3>
+                                </div>
+                                <ul className="space-y-4 text-sm text-slate-400">
+                                    <li className="flex gap-3">
+                                        <span className="text-red-400 font-bold">!</span>
+                                        <span>If <strong>"Command not found"</strong> occurs, ensure you have run `npm install` first.</span>
+                                    </li>
+                                    <li className="flex gap-3">
+                                        <span className="text-red-400 font-bold">!</span>
+                                        <span>For <strong>Auth Errors</strong>, try using the "API Key" login method directly in the CLI menu.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Footer */}
             <footer className="py-12 px-4 border-t border-[#982598]/10 bg-[#0f102b] text-center relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-4 opacity-70">

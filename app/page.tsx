@@ -1,56 +1,178 @@
 "use client";
 
 import Navbar from "@/components/landing/Navbar";
-import { Terminal, Shield, Cpu, Zap, ArrowRight, Command, ChevronRight } from "lucide-react";
+import { Terminal, Shield, Cpu, Zap, ArrowRight, Command, ChevronRight, Copy, Check, ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
     const [activeSection, setActiveSection] = useState("Home");
+    const [copied, setCopied] = useState(false);
+    const [typedText, setTypedText] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
+    const fullText = "npm run neura-agent";
+
+    // Simulate System Boot / Loading
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    // Typewriter Effect
+    useEffect(() => {
+        if (isLoading) return;
+
+        let index = 0;
+        const interval = setInterval(() => {
+            setTypedText(fullText.substring(0, index + 1));
+            index++;
+            if (index > fullText.length) clearInterval(interval);
+        }, 100);
+        return () => clearInterval(interval);
+    }, [isLoading]);
+
+    // Scroll Handler
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollTop(window.scrollY > 400);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Copy to Clipboard
+    const handleCopy = () => {
+        navigator.clipboard.writeText("npm run neura-agent");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // --- SKELETON COMPONENT ---
+    if (isLoading) {
+        return (
+            <main className="min-h-screen bg-[#15173D] flex flex-col items-center justify-center relative overflow-hidden">
+                {/* Navbar Skeleton */}
+                <div className="fixed top-0 w-full h-20 border-b border-[#982598]/20 bg-[#15173D]/90 backdrop-blur-md z-50 animate-pulse"></div>
+
+                <div className="w-full max-w-4xl px-6 space-y-8 animate-pulse z-10">
+                    {/* Badge */}
+                    <div className="h-8 w-48 bg-[#982598]/20 rounded-full mx-auto"></div>
+
+                    {/* Title */}
+                    <div className="space-y-4">
+                        <div className="h-16 w-3/4 bg-[#1A1D4D] rounded-xl mx-auto border border-[#982598]/10"></div>
+                        <div className="h-16 w-1/2 bg-[#1A1D4D] rounded-xl mx-auto border border-[#982598]/10"></div>
+                    </div>
+
+                    {/* Text */}
+                    <div className="h-4 w-2/3 bg-[#1A1D4D] rounded mx-auto mt-8"></div>
+                    <div className="h-4 w-1/2 bg-[#1A1D4D] rounded mx-auto"></div>
+
+                    {/* Terminal Block */}
+                    <div className="h-64 w-full bg-[#0a0b1e] rounded-xl border border-[#982598]/20 mt-12 relative overflow-hidden">
+                        <div className="absolute top-0 w-full h-10 bg-[#15173D] border-b border-[#982598]/20"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#982598]/5 to-transparent"></div>
+                    </div>
+                </div>
+
+                {/* Loading Text */}
+                <div className="mt-8 font-mono text-[#E491C9] text-sm animate-pulse tracking-widest">
+                    INITIALIZING NEURALINK...
+                </div>
+            </main>
+        );
+    }
 
     return (
-        <main className="min-h-screen bg-[#15173D] text-white selection:bg-[#E491C9] selection:text-[#15173D]">
+        <main className="min-h-screen bg-[#15173D] text-white selection:bg-[#E491C9] selection:text-[#15173D] overflow-x-hidden">
             <Navbar activeSection={activeSection} onSectionChange={setActiveSection} />
 
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-                {/* Background Glows */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#982598] opacity-20 blur-[120px] rounded-full pointer-events-none" />
+            {/* Animated Starfield Background */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+                {/* Simulated Stars */}
+                {[...Array(20)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute rounded-full bg-white opacity-40 animate-pulse"
+                        style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            width: `${Math.random() * 3}px`,
+                            height: `${Math.random() * 3}px`,
+                            animationDuration: `${Math.random() * 3 + 2}s`
+                        }}
+                    />
+                ))}
+            </div>
 
-                <div className="relative mx-auto max-w-7xl text-center z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#982598]/10 border border-[#982598]/30 mb-8 backdrop-blur-sm">
+            {/* Scroll To Top Button */}
+            <button
+                onClick={scrollToTop}
+                className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-[#E491C9] text-[#15173D] shadow-[0_0_20px_rgba(228,145,201,0.5)] transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+                    }`}
+                aria-label="Scroll to top"
+            >
+                <ArrowUp className="w-6 h-6" />
+            </button>
+
+            {/* Hero Section */}
+            <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center">
+                {/* Background Glows */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#982598] opacity-20 blur-[120px] rounded-full pointer-events-none" />
+
+                <div className="relative max-w-5xl text-center z-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#982598]/10 border border-[#982598]/30 mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(152,37,152,0.3)]">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E491C9] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E491C9]"></span>
                         </span>
-                        <span className="text-sm font-medium text-[#E491C9] tracking-wide">NeuraAgent CLI v1.0 Live</span>
+                        <span className="text-sm font-medium text-[#E491C9] tracking-wide">System Online v1.0</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
                         <span className="block text-white">Your Terminal,</span>
-                        <span className="bg-gradient-to-r from-[#982598] to-[#E491C9] bg-clip-text text-transparent">Reimagined.</span>
+                        <span className="bg-gradient-to-r from-[#982598] to-[#E491C9] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(228,145,201,0.3)]">Reimagined.</span>
                     </h1>
 
                     <p className="mx-auto max-w-2xl text-lg text-slate-300 mb-10 leading-relaxed">
-                        Interaction with Bankr AI shouldn't be boring. Experience the premium
-                        <span className="text-[#E491C9]"> Cyberpunk TUI wrapper</span> that transforms your command line into a neural interface.
+                        Experience the premium <span className="text-[#E491C9] font-semibold">Cyberpunk TUI wrapper</span> for Bankr AI.
+                        <br />
+                        Chat, manage, and deploy - directly from your command line.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button className="group relative px-8 py-4 bg-[#982598] hover:bg-[#851e85] rounded-xl font-bold text-white shadow-[0_0_20px_rgba(152,37,152,0.5)] transition-all hover:shadow-[0_0_30px_rgba(152,37,152,0.7)] hover:-translate-y-1">
-                            <span className="flex items-center gap-2">
-                                Initialize System
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </span>
-                        </button>
-                        <button className="px-8 py-4 rounded-xl border border-[#982598]/30 hover:border-[#E491C9]/50 hover:bg-[#982598]/10 font-medium text-slate-200 transition-all">
-                            View Documentation
-                        </button>
+                    {/* Quick Install Bar */}
+                    <div className="mx-auto max-w-md w-full mb-12 group relative">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[#982598] to-[#E491C9] rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                        <div className="relative flex items-center justify-between gap-4 p-4 bg-[#0a0b1e]/90 backdrop-blur-xl border border-[#982598]/30 rounded-xl shadow-2xl">
+                            <div className="flex items-center gap-3 font-mono text-sm md:text-base text-[#E491C9]">
+                                <span className="text-[#982598]">❯</span>
+                                <span className="typing-cursor">{typedText}<span className="animate-pulse">|</span></span>
+                            </div>
+                            <button
+                                onClick={handleCopy}
+                                className="p-2 rounded-lg hover:bg-[#982598]/20 text-slate-400 hover:text-white transition-colors"
+                                title="Copy Command"
+                            >
+                                {copied ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5" />}
+                            </button>
+                        </div>
+                        <p className="mt-3 text-xs text-slate-400 uppercase tracking-widest">
+                            Run this to start
+                        </p>
                     </div>
                 </div>
 
                 {/* Terminal Visual */}
-                <div className="mt-20 mx-auto max-w-4xl relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-[#982598] to-[#E491C9] rounded-2xl blur opacity-30"></div>
+                <div className="mx-auto max-w-4xl w-full relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-[#982598] to-[#E491C9] rounded-2xl blur opacity-20"></div>
                     <div className="relative rounded-xl bg-[#0a0b1e] border border-[#982598]/20 shadow-2xl overflow-hidden">
                         <div className="flex items-center gap-2 px-4 py-3 bg-[#15173D]/50 border-b border-[#982598]/20">
                             <div className="flex gap-2">
@@ -72,7 +194,7 @@ export default function Home() {
                                 <div>[OK] Theme: Cyberpunk v2</div>
                             </div>
                             <div className="pt-4 text-[#00F0FF]">
-                                <pre className="font-bold leading-none">
+                                <pre className="font-bold leading-none select-none">
                                     {`
   _   _                         _                    _   
  | \\ | | ___ _   _ _ __ __ _   / \\   __ _  ___ _ __ | |_ 
@@ -92,7 +214,7 @@ export default function Home() {
             </section>
 
             {/* Features Grid */}
-            <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D] relative">
+            <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D] relative z-10">
                 <div className="mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -134,12 +256,13 @@ export default function Home() {
                                 desc: "Aesthetic terminal UI with animations, spinners, and box layouts."
                             }
                         ].map((feature, idx) => (
-                            <div key={idx} className="group p-8 rounded-2xl bg-[#1A1D4D] border border-[#982598]/10 hover:border-[#E491C9]/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-[#982598]/20">
-                                <div className="mb-4 p-3 rounded-xl bg-[#15173D] inline-block border border-[#982598]/20 group-hover:bg-[#982598]/10 transition-colors">
+                            <div key={idx} className="group p-8 rounded-2xl bg-[#1A1D4D] border border-[#982598]/10 hover:border-[#E491C9]/50 transition-all hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(152,37,152,0.2)] relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#982598]/0 to-[#982598]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="mb-4 p-3 rounded-xl bg-[#15173D] inline-block border border-[#982598]/20 group-hover:bg-[#982598]/10 transition-colors relative z-10">
                                     {feature.icon}
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-white">{feature.title}</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+                                <h3 className="text-xl font-bold mb-2 text-white relative z-10">{feature.title}</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed relative z-10">{feature.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -147,7 +270,7 @@ export default function Home() {
             </section>
 
             {/* Installation Section */}
-            <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-gradient-to-b from-[#15173D] to-[#0f102b]">
+            <section id="install" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-gradient-to-b from-[#15173D] to-[#0f102b] relative z-10">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-8">
                         Ready to <span className="text-[#982598]">Upgrade?</span>
@@ -177,9 +300,9 @@ export default function Home() {
                                 <span className="text-[#982598]">#</span>
                                 <span>Launch NeuraAgent</span>
                             </div>
-                            <div className="p-4 bg-[#982598]/10 rounded-lg border border-[#E491C9]/30 text-[#E491C9] flex justify-between items-center cursor-pointer hover:bg-[#982598]/20 transition-colors">
+                            <div className="p-4 bg-[#982598]/10 rounded-lg border border-[#E491C9]/30 text-[#E491C9] flex justify-between items-center cursor-pointer hover:bg-[#982598]/20 transition-colors" onClick={handleCopy}>
                                 <span>npm run neura-agent</span>
-                                <span className="text-xs opacity-70">COPY</span>
+                                <span className="text-xs opacity-70">{copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}</span>
                             </div>
                         </div>
                     </div>
@@ -187,8 +310,12 @@ export default function Home() {
             </section>
 
             {/* Footer */}
-            <footer className="py-12 px-4 border-t border-[#982598]/10 text-center text-slate-500 text-sm">
-                <p>© 2026 NeuraWorld. Powered by Bankr AI.</p>
+            <footer className="py-12 px-4 border-t border-[#982598]/10 bg-[#0f102b] text-center relative z-10">
+                <div className="flex items-center justify-center gap-2 mb-4 opacity-70">
+                    <Terminal className="w-5 h-5 text-[#E491C9]" />
+                    <span className="font-bold text-white">NeuraAgent</span>
+                </div>
+                <p className="text-slate-500 text-sm">© 2026 NeuraWorld. Powered by Bankr AI.</p>
             </footer>
         </main>
     );

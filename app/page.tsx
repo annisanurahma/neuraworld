@@ -198,11 +198,11 @@ export default function Home() {
                             <div className="pt-4 text-[#00F0FF]">
                                 <pre className="font-bold leading-none select-none">
                                     {`
- __  __  ___  _   _____ ____    _    _   _ _  __
-|  \\/  |/ _ \\| | |_   _| __ )  / \\  | \\ | | |/ /
-| |\\/| | | | | |   | | |  _ \\ / _ \\ |  \\| | ' / 
-| |  | | |_| | |___| | | |_) / ___ \\| |\\  | . \\ 
-|_|  |_|\\___/|_____|_| |____/_/   \\_\\_| \\_|_|\\_\\
+ __  __  ___  _   _____ _   _ _  ___ ___
+|  \\/  |/ _ \\| | |_   _| \\ | | |/ /| _ \\
+| |\\/| | | | | |   | | |  \\| | ' / |   /
+| |  | | |_| | |___| | | |\\  | . \\ | |\\ \\
+|_|  |_|\\___/|_____|_| |_| \\_|_|\\_\\|_| \\_\\
                                 `}
                                 </pre>
                             </div>
@@ -481,7 +481,7 @@ export default function Home() {
             {/* Footer */}
             <footer className="py-12 px-4 border-t border-[#982598]/10 bg-[#0f102b]/65 backdrop-blur-[1px] text-center relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-4 opacity-70">
-                    <Image src="/MOLTNKR.png" alt="MOLTNKR" width={36} height={36} className="h-9 w-9 object-contain" />
+                    <Image src="/moltnkr.png" alt="MOLTNKR" width={36} height={36} className="h-9 w-9 object-contain" />
                     <span className="font-bold text-white">MOLTNKR</span>
                 </div>
                 <p className="text-slate-500 text-sm">© 2026 MOLTNKR. Powered by Bankr AI.</p>

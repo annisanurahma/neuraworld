@@ -38,7 +38,7 @@ export default function Navbar({ activeSection = "", onSectionChange = () => { }
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onSectionChange("Home")}>
-                        <Image src="/MOLTNKR.png" alt="MOLTNKR" width={36} height={36} className="h-9 w-9 object-contain" />
+                        <Image src="/moltnkr.png" alt="MOLTNKR" width={36} height={36} className="h-9 w-9 object-contain" />
                         <span className="text-xl font-bold text-white tracking-tight group-hover:text-[#E491C9] transition-colors">
                             MOLTNKR
                         </span>

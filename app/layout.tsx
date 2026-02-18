@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NeuraWorld",
-  description: "AI Civilization Platform",
+  title: "MOLTNKR",
+  description: "MOLTNKR AI Platform",
 };
 
 export default function RootLayout({

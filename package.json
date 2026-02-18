@@ -1,5 +1,5 @@
 {
-  "name": "neuraworld",
+  "name": "moltnkr",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "MOLTNKR": "node neura-agent/index.js"
+    "moltnkr": "node neura-agent/index.js"
   },
   "dependencies": {
     "gsap": "^3.14.2",

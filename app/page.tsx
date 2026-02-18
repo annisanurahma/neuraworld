@@ -80,7 +80,7 @@ export default function Home() {
                     {/* Terminal Block */}
                     <div className="h-64 w-full bg-[#0a0b1e] rounded-xl border border-[#982598]/20 mt-12 relative overflow-hidden">
                         <div className="absolute top-0 w-full h-10 bg-[#15173D] border-b border-[#982598]/20"></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#982598]/5 to-transparent"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-[#982598]/5 to-transparent"></div>
                     </div>
                 </div>
 
@@ -128,7 +128,7 @@ export default function Home() {
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center">
                 {/* Background Glows */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#982598] opacity-20 blur-[120px] rounded-full pointer-events-none" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-100 bg-[#982598] opacity-20 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="relative max-w-5xl text-center z-10">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#982598]/10 border border-[#982598]/30 mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(152,37,152,0.3)]">
@@ -141,7 +141,7 @@ export default function Home() {
 
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
                         <span className="block text-white">Your Terminal,</span>
-                        <span className="bg-gradient-to-r from-[#982598] to-[#E491C9] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(228,145,201,0.3)]">Reimagined.</span>
+                        <span className="bg-linear-to-r from-[#982598] to-[#E491C9] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(228,145,201,0.3)]">Reimagined.</span>
                     </h1>
 
                     <p className="mx-auto max-w-2xl text-lg text-slate-300 mb-10 leading-relaxed">
@@ -152,7 +152,7 @@ export default function Home() {
 
                     {/* Quick Install Bar */}
                     <div className="mx-auto max-w-md w-full mb-12 group relative">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[#982598] to-[#E491C9] rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                        <div className="absolute -inset-1 bg-linear-to-r from-[#982598] to-[#E491C9] rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                         <div className="relative flex items-center justify-between gap-4 p-4 bg-[#0a0b1e]/90 backdrop-blur-xl border border-[#982598]/30 rounded-xl shadow-2xl">
                             <div className="flex items-center gap-3 font-mono text-sm md:text-base text-[#E491C9]">
                                 <span className="text-[#982598]">{">"}</span>
@@ -174,7 +174,7 @@ export default function Home() {
 
                 {/* Terminal Visual */}
                 <div className="mx-auto max-w-4xl w-full relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-[#982598] to-[#E491C9] rounded-2xl blur opacity-20"></div>
+                    <div className="absolute -inset-1 bg-linear-to-r from-[#982598] to-[#E491C9] rounded-2xl blur opacity-20"></div>
                     <div className="relative rounded-xl bg-[#0a0b1e] border border-[#982598]/20 shadow-2xl overflow-hidden">
                         <div className="flex items-center gap-2 px-4 py-3 bg-[#15173D]/50 border-b border-[#982598]/20">
                             <div className="flex gap-2">
@@ -184,7 +184,7 @@ export default function Home() {
                             </div>
                             <div className="ml-4 text-xs text-slate-500 font-mono">MOLTNKR - node</div>
                         </div>
-                        <div className="p-6 font-mono text-sm space-y-2 min-h-[300px]">
+                        <div className="p-6 font-mono text-sm space-y-2 min-h-75">
                             <div className="flex gap-2 text-[#E491C9]">
                                 <span className="opacity-50">{">"}</span>
                                 <span>npm run MOLTNKR</span>
@@ -227,7 +227,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="relative h-[560px] w-full">
+                    <div className="relative h-140 w-full">
                         <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
                             <Card customClass="w-full h-full p-6 bg-[#0b0f1f]/85 border border-[#E491C9]/35 text-white shadow-[0_0_40px_rgba(228,145,201,0.15)]">
                                 <p className="text-xs uppercase tracking-[0.3em] text-[#E491C9] mb-4">Governance Pulse</p>
@@ -331,7 +331,7 @@ export default function Home() {
                             }
                         ].map((feature, idx) => (
                             <div key={idx} className="group p-8 rounded-2xl bg-[#1A1D4D] border border-[#982598]/10 hover:border-[#E491C9]/50 transition-all hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(152,37,152,0.2)] relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#982598]/0 to-[#982598]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute inset-0 bg-linear-to-br from-[#982598]/0 to-[#982598]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <div className="mb-4 p-3 rounded-xl bg-[#15173D] inline-block border border-[#982598]/20 group-hover:bg-[#982598]/10 transition-colors relative z-10">
                                     {feature.icon}
                                 </div>
@@ -344,7 +344,7 @@ export default function Home() {
             </section>
 
             {/* Installation Section */}
-            <section id="install" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-gradient-to-b from-[#15173D]/55 to-[#0f102b]/55 backdrop-blur-[1px] relative z-10">
+            <section id="install" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-linear-to-b from-[#15173D]/55 to-[#0f102b]/55 backdrop-blur-[1px] relative z-10">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-8">
                         Ready to <span className="text-[#982598]">Upgrade?</span>

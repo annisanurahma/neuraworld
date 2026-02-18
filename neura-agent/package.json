@@ -1,7 +1,7 @@
-{
+﻿{
     "name": "neura-agent",
     "version": "1.0.0",
-    "description": "NeuraAgent CLI Wrapper for Bankr",
+    "description": "MOLTNKR CLI Wrapper for Bankr",
     "main": "index.js",
     "type": "module",
     "scripts": {
@@ -18,3 +18,4 @@
         "ora": "^7.0.1"
     }
 }
+

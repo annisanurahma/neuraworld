@@ -1,8 +1,10 @@
-"use client";
+﻿"use client";
 
 import Navbar from "@/components/landing/Navbar";
 import { Terminal, Shield, Cpu, Zap, ArrowRight, Command, ChevronRight, Copy, Check, ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import CardSwap, { Card } from "@/components/CardSwap";
+import Image from "next/image";
 
 export default function Home() {
     const [activeSection, setActiveSection] = useState("Home");
@@ -11,7 +13,7 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [showScrollTop, setShowScrollTop] = useState(false);
 
-    const fullText = "npm run neura-agent";
+    const fullText = "npm run MOLTNKR";
 
     // Simulate System Boot / Loading
     useEffect(() => {
@@ -45,7 +47,7 @@ export default function Home() {
 
     // Copy to Clipboard
     const handleCopy = () => {
-        navigator.clipboard.writeText("npm run neura-agent");
+        navigator.clipboard.writeText("npm run MOLTNKR");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -57,7 +59,7 @@ export default function Home() {
     // --- SKELETON COMPONENT ---
     if (isLoading) {
         return (
-            <main className="min-h-screen bg-[#15173D] flex flex-col items-center justify-center relative overflow-hidden">
+            <main className="min-h-screen bg-transparent flex flex-col items-center justify-center relative overflow-hidden">
                 {/* Navbar Skeleton */}
                 <div className="fixed top-0 w-full h-20 border-b border-[#982598]/20 bg-[#15173D]/90 backdrop-blur-md z-50 animate-pulse"></div>
 
@@ -84,14 +86,14 @@ export default function Home() {
 
                 {/* Loading Text */}
                 <div className="mt-8 font-mono text-[#E491C9] text-sm animate-pulse tracking-widest">
-                    INITIALIZING NEURALINK...
+                    INITIALIZING MOLTNKR CORE...
                 </div>
             </main>
         );
     }
 
     return (
-        <main className="min-h-screen bg-[#15173D] text-white selection:bg-[#E491C9] selection:text-[#15173D] overflow-x-hidden">
+        <main className="min-h-screen bg-transparent text-white selection:bg-[#E491C9] selection:text-[#15173D] overflow-x-hidden">
             <Navbar activeSection={activeSection} onSectionChange={setActiveSection} />
 
             {/* Animated Starfield Background */}
@@ -153,7 +155,7 @@ export default function Home() {
                         <div className="absolute -inset-1 bg-gradient-to-r from-[#982598] to-[#E491C9] rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                         <div className="relative flex items-center justify-between gap-4 p-4 bg-[#0a0b1e]/90 backdrop-blur-xl border border-[#982598]/30 rounded-xl shadow-2xl">
                             <div className="flex items-center gap-3 font-mono text-sm md:text-base text-[#E491C9]">
-                                <span className="text-[#982598]">❯</span>
+                                <span className="text-[#982598]">{">"}</span>
                                 <span className="typing-cursor">{typedText}<span className="animate-pulse">|</span></span>
                             </div>
                             <button
@@ -180,14 +182,14 @@ export default function Home() {
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
                             </div>
-                            <div className="ml-4 text-xs text-slate-500 font-mono">neura-agent — node</div>
+                            <div className="ml-4 text-xs text-slate-500 font-mono">MOLTNKR - node</div>
                         </div>
                         <div className="p-6 font-mono text-sm space-y-2 min-h-[300px]">
                             <div className="flex gap-2 text-[#E491C9]">
-                                <span className="opacity-50">❯</span>
-                                <span>npm run neura-agent</span>
+                                <span className="opacity-50">{">"}</span>
+                                <span>npm run MOLTNKR</span>
                             </div>
-                            <div className="text-[#982598] animate-pulse">Initializing NeuraLink Core...</div>
+                            <div className="text-[#982598] animate-pulse">Initializing MOLTNKR Core...</div>
                             <div className="text-slate-400 pl-4 border-l-2 border-[#982598]/30">
                                 <div>[OK] Loading Modules...</div>
                                 <div>[OK] Establishing Secure Connection...</div>
@@ -196,25 +198,97 @@ export default function Home() {
                             <div className="pt-4 text-[#00F0FF]">
                                 <pre className="font-bold leading-none select-none">
                                     {`
-  _   _                         _                    _   
- | \\ | | ___ _   _ _ __ __ _   / \\   __ _  ___ _ __ | |_ 
- |  \\| |/ _ \\ | | | '__/ _\` | / _ \\ / _\` |/ _ \\ '_ \\| __|
- | |\\  |  __/ |_| | | | | | |/ ___ \\ (_| |  __/ | | | |_ 
- |_| \\_|\\___|\\__,_|_| |_| |_/_/   \\_\\__, |\\___|_| |_|\\__|
-                                    |___/                 
+ __  __  ___  _   _____ ____    _    _   _ _  __
+|  \\/  |/ _ \\| | |_   _| __ )  / \\  | \\ | | |/ /
+| |\\/| | | | | |   | | |  _ \\ / _ \\ |  \\| | ' / 
+| |  | | |_| | |___| | | |_) / ___ \\| |\\  | . \\ 
+|_|  |_|\\___/|_____|_| |____/_/   \\_\\_| \\_|_|\\_\\
                                 `}
                                 </pre>
                             </div>
                             <div className="pt-2 text-white">
-                                <span className="text-[#E491C9]">❯</span> Welcome back, Operator. Select interaction mode.
+                                <span className="text-[#E491C9]">{">"}</span> Welcome back, Operator. Select interaction mode.
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <section className="relative z-10 px-4 sm:px-6 lg:px-8 pb-24">
+                <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E491C9] mb-4">Live Command Deck</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Rotating Intelligence Cards
+                        </h2>
+                        <p className="text-slate-300 max-w-xl">
+                            Monitor critical world streams in one glance. Each card highlights the latest
+                            operational state across governance, market activity, and autonomous agent performance.
+                        </p>
+                    </div>
+
+                    <div className="relative h-[560px] w-full">
+                        <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
+                            <Card customClass="w-full h-full p-6 bg-[#0b0f1f]/85 border border-[#E491C9]/35 text-white shadow-[0_0_40px_rgba(228,145,201,0.15)]">
+                                <p className="text-xs uppercase tracking-[0.3em] text-[#E491C9] mb-4">Governance Pulse</p>
+                                <h3 className="text-2xl font-bold mb-3">Council Alignment Stable</h3>
+                                <p className="text-slate-300 mb-6">
+                                    12 proposals passed this cycle with dual consensus between human delegates and agent councils.
+                                </p>
+                                <div className="grid grid-cols-2 gap-3 text-sm">
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+                                        <div className="text-slate-400">Approval Rate</div>
+                                        <div className="text-lg font-semibold text-emerald-300">94.8%</div>
+                                    </div>
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+                                        <div className="text-slate-400">Pending Votes</div>
+                                        <div className="text-lg font-semibold text-amber-300">3</div>
+                                    </div>
+                                </div>
+                            </Card>
+
+                            <Card customClass="w-full h-full p-6 bg-[#0b0f1f]/85 border border-[#00F0FF]/35 text-white shadow-[0_0_40px_rgba(0,240,255,0.12)]">
+                                <p className="text-xs uppercase tracking-[0.3em] text-[#00F0FF] mb-4">Market Relay</p>
+                                <h3 className="text-2xl font-bold mb-3">Trade Network Synchronizing</h3>
+                                <p className="text-slate-300 mb-6">
+                                    Signal latency dropped 18% after smart routing updates across cross-sector liquidity channels.
+                                </p>
+                                <div className="grid grid-cols-2 gap-3 text-sm">
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+                                        <div className="text-slate-400">24h Volume</div>
+                                        <div className="text-lg font-semibold text-cyan-300">$8.2M</div>
+                                    </div>
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+                                        <div className="text-slate-400">Latency</div>
+                                        <div className="text-lg font-semibold text-cyan-200">42ms</div>
+                                    </div>
+                                </div>
+                            </Card>
+
+                            <Card customClass="w-full h-full p-6 bg-[#0b0f1f]/85 border border-[#982598]/40 text-white shadow-[0_0_40px_rgba(152,37,152,0.15)]">
+                                <p className="text-xs uppercase tracking-[0.3em] text-[#CFA9FF] mb-4">Agent Ops</p>
+                                <h3 className="text-2xl font-bold mb-3">Autonomous Fleet Healthy</h3>
+                                <p className="text-slate-300 mb-6">
+                                    Mission agents are maintaining high completion rates with no critical anomaly in the last 7 hours.
+                                </p>
+                                <div className="grid grid-cols-2 gap-3 text-sm">
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+                                        <div className="text-slate-400">Tasks Completed</div>
+                                        <div className="text-lg font-semibold text-violet-300">1,248</div>
+                                    </div>
+                                    <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+                                        <div className="text-slate-400">Critical Alerts</div>
+                                        <div className="text-lg font-semibold text-emerald-300">0</div>
+                                    </div>
+                                </div>
+                            </Card>
+                        </CardSwap>
+                    </div>
+                </div>
+            </section>
+
             {/* Features Grid */}
-            <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D] relative z-10">
+            <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D]/45 backdrop-blur-[1px] relative z-10">
                 <div className="mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -270,7 +344,7 @@ export default function Home() {
             </section>
 
             {/* Installation Section */}
-            <section id="install" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-gradient-to-b from-[#15173D] to-[#0f102b] relative z-10">
+            <section id="install" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-gradient-to-b from-[#15173D]/55 to-[#0f102b]/55 backdrop-blur-[1px] relative z-10">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-8">
                         Ready to <span className="text-[#982598]">Upgrade?</span>
@@ -285,7 +359,7 @@ export default function Home() {
                                 <span>Clone Repository</span>
                             </div>
                             <div className="p-4 bg-[#15173D] rounded-lg border border-[#982598]/10 text-slate-300">
-                                git clone https://github.com/annisanurahma/neuraworld.git
+                                git clone https://github.com/MOLTNKR/MOLTNKR.git
                             </div>
 
                             <div className="flex gap-4 items-center text-slate-400 mt-6">
@@ -298,10 +372,10 @@ export default function Home() {
 
                             <div className="flex gap-4 items-center text-slate-400 mt-6">
                                 <span className="text-[#982598]">#</span>
-                                <span>Launch Moltbank</span>
+                                <span>Launch MOLTNKR</span>
                             </div>
                             <div className="p-4 bg-[#982598]/10 rounded-lg border border-[#E491C9]/30 text-[#E491C9] flex justify-between items-center cursor-pointer hover:bg-[#982598]/20 transition-colors" onClick={handleCopy}>
-                                <span>npm run neura-agent</span>
+                                <span>npm run MOLTNKR</span>
                                 <span className="text-xs opacity-70">{copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}</span>
                             </div>
                         </div>
@@ -310,7 +384,7 @@ export default function Home() {
             </section>
 
             {/* Documentation Section */}
-            <section id="docs" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D] relative z-10">
+            <section id="docs" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#15173D]/45 backdrop-blur-[1px] relative z-10">
                 <div className="mx-auto max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -329,10 +403,10 @@ export default function Home() {
                             <div className="space-y-6">
                                 <div className="group">
                                     <div className="flex items-center justify-between mb-2">
-                                        <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#E491C9] border border-[#982598]/30 group-hover:bg-[#E491C9] group-hover:text-[#15173D] transition-colors">npm run neura-agent</code>
+                                        <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#E491C9] border border-[#982598]/30 group-hover:bg-[#E491C9] group-hover:text-[#15173D] transition-colors">npm run MOLTNKR</code>
                                         <span className="text-xs text-slate-500 font-mono">INIT</span>
                                     </div>
-                                    <p className="text-slate-400 text-sm">Launches the Moltbank Text User Interface (TUI). This is your main entry point.</p>
+                                    <p className="text-slate-400 text-sm">Launches the MOLTNKR Text User Interface (TUI). This is your main entry point.</p>
                                 </div>
                                 <div className="h-px bg-[#982598]/10" />
                                 <div className="group">
@@ -371,7 +445,7 @@ export default function Home() {
                                 </div>
                                 <div className="space-y-4 text-sm text-slate-300">
                                     <p>
-                                        Moltbank inherits configuration from the base <code className="text-[#E491C9]">bankr</code> CLI.
+                                        MOLTNKR inherits configuration from the base <code className="text-[#E491C9]">bankr</code> CLI.
                                         Ensure your environment is set up correctly.
                                     </p>
                                     <div className="bg-[#0a0b1e] p-4 rounded-lg font-mono text-xs border border-[#982598]/10 overflow-x-auto text-slate-300">
@@ -405,13 +479,15 @@ export default function Home() {
             </section>
 
             {/* Footer */}
-            <footer className="py-12 px-4 border-t border-[#982598]/10 bg-[#0f102b] text-center relative z-10">
+            <footer className="py-12 px-4 border-t border-[#982598]/10 bg-[#0f102b]/65 backdrop-blur-[1px] text-center relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-4 opacity-70">
-                    <Terminal className="w-5 h-5 text-[#E491C9]" />
-                    <span className="font-bold text-white">Moltbank</span>
+                    <Image src="/MOLTNKR.png" alt="MOLTNKR" width={36} height={36} className="h-9 w-9 object-contain" />
+                    <span className="font-bold text-white">MOLTNKR</span>
                 </div>
-                <p className="text-slate-500 text-sm">© 2026 NeuraWorld. Powered by Bankr AI.</p>
+                <p className="text-slate-500 text-sm">© 2026 MOLTNKR. Powered by Bankr AI.</p>
             </footer>
         </main>
     );
 }
+
+

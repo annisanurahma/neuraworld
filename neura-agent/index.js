@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import inquirer from 'inquirer';
 import chalk from 'chalk';
@@ -44,7 +44,7 @@ async function typeWriter(text, speed = 30) {
 
 async function systemStartup() {
     console.clear();
-    const spinner = ora(theme.primary('Initializing NeuraLink Core...')).start();
+    const spinner = ora(theme.primary('Initializing MOLTNKR Core...')).start();
     await sleep(800);
     spinner.color = 'magenta';
     spinner.text = theme.secondary('Establishing Secure Connection...');
@@ -60,7 +60,7 @@ async function systemStartup() {
 
 async function displayBanner() {
     console.clear();
-    const title = figlet.textSync('NeuraAgent', {
+    const title = figlet.textSync('MOLTNKR', {
         font: 'Standard',
         horizontalLayout: 'fitted',
         verticalLayout: 'default',
@@ -87,7 +87,7 @@ function executeBankr(args, showOutput = true) {
 
     } catch (error) {
         // bankr CLI might exit with non-zero if user cancels or errors, handle gracefully
-        // log(theme.secondary('\n✖ Signal Lost.')); 
+        // log(theme.secondary('\nâœ– Signal Lost.')); 
     }
 }
 
@@ -206,12 +206,12 @@ async function main() {
                 message: theme.text('Select Module:'),
                 pageSize: 10,
                 choices: [
-                    { name: '  ' + theme.primary('⚡  Neural Interface (Prompt)'), value: 'New Prompt' },
-                    { name: '  ' + theme.primary('🔑  Access Control (Login)'), value: 'Login / Auth' },
-                    { name: '  ' + theme.primary('📊  System Status (Whoami)'), value: 'Check Status (Whoami)' },
-                    { name: '  ' + theme.primary('⚙️   Configuration'), value: 'Configuration' },
+                    { name: '  ' + theme.primary('âš¡  Neural Interface (Prompt)'), value: 'New Prompt' },
+                    { name: '  ' + theme.primary('ðŸ”‘  Access Control (Login)'), value: 'Login / Auth' },
+                    { name: '  ' + theme.primary('ðŸ“Š  System Status (Whoami)'), value: 'Check Status (Whoami)' },
+                    { name: '  ' + theme.primary('âš™ï¸   Configuration'), value: 'Configuration' },
                     new inquirer.Separator(),
-                    { name: '  ' + theme.secondary('❌  Sever Connection (Exit)'), value: 'Exit' }
+                    { name: '  ' + theme.secondary('âŒ  Sever Connection (Exit)'), value: 'Exit' }
                 ]
             }
         ]);
@@ -234,7 +234,7 @@ async function main() {
                 await inquirer.prompt([{ type: 'input', name: 'cont', message: theme.dim('Press Enter to continue...') }]);
                 break;
             case 'Exit':
-                log(theme.primary('\nNeuraAgent session terminated.'));
+                log(theme.primary('\nMOLTNKR session terminated.'));
                 log(theme.dim('Have a productive cycle.'));
                 process.exit(0);
         }
@@ -251,3 +251,4 @@ main().catch(err => {
     console.error(err);
     process.exit(1);
 });
+

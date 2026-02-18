@@ -17,7 +17,7 @@ const activity = [
 
 export default function WalletPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-transparent">
             <Navbar />
 
             <main className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-10">

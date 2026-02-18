@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 interface NavbarProps {
@@ -30,18 +31,16 @@ export default function Navbar({ activeSection = "", onSectionChange = () => { }
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[#15173D]/80 backdrop-blur-md border-b border-[#982598]/20 py-3" : "bg-transparent py-5"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/10 py-3" : "bg-transparent py-5"
                 }`}
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onSectionChange("Home")}>
-                        <div className="p-2 rounded-lg bg-[#982598]/10 border border-[#982598]/30 group-hover:bg-[#982598]/20 transition-colors">
-                            <Terminal className="w-5 h-5 text-[#E491C9]" />
-                        </div>
+                        <Image src="/MOLTNKR.png" alt="MOLTNKR" width={36} height={36} className="h-9 w-9 object-contain" />
                         <span className="text-xl font-bold text-white tracking-tight group-hover:text-[#E491C9] transition-colors">
-                            Moltbank
+                            MOLTNKR
                         </span>
                     </div>
 
@@ -106,3 +105,5 @@ export default function Navbar({ activeSection = "", onSectionChange = () => { }
         </nav>
     );
 }
+
+

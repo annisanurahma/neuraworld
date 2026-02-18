@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 interface NavbarProps {
-    activeSection: string;
-    onSectionChange: (section: string) => void;
+    activeSection?: string;
+    onSectionChange?: (section: string) => void;
 }
 
 const navLinks = [
@@ -16,7 +16,7 @@ const navLinks = [
     { name: "Docs", href: "#docs" },
 ];
 
-export default function Navbar({ activeSection, onSectionChange }: NavbarProps) {
+export default function Navbar({ activeSection = "", onSectionChange = () => { } }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Navbar({ activeSection, onSectionChange }: NavbarProps) 
                             <Terminal className="w-5 h-5 text-[#E491C9]" />
                         </div>
                         <span className="text-xl font-bold text-white tracking-tight group-hover:text-[#E491C9] transition-colors">
-                            Neura<span className="text-[#982598]">Agent</span>
+                            Moltbank
                         </span>
                     </div>
 

@@ -298,7 +298,7 @@ export default function Home() {
 
                             <div className="flex gap-4 items-center text-slate-400 mt-6">
                                 <span className="text-[#982598]">#</span>
-                                <span>Launch NeuraAgent</span>
+                                <span>Launch Moltbank</span>
                             </div>
                             <div className="p-4 bg-[#982598]/10 rounded-lg border border-[#E491C9]/30 text-[#E491C9] flex justify-between items-center cursor-pointer hover:bg-[#982598]/20 transition-colors" onClick={handleCopy}>
                                 <span>npm run neura-agent</span>
@@ -332,7 +332,7 @@ export default function Home() {
                                         <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#E491C9] border border-[#982598]/30 group-hover:bg-[#E491C9] group-hover:text-[#15173D] transition-colors">npm run neura-agent</code>
                                         <span className="text-xs text-slate-500 font-mono">INIT</span>
                                     </div>
-                                    <p className="text-slate-400 text-sm">Launches the NeuraAgent Text User Interface (TUI). This is your main entry point.</p>
+                                    <p className="text-slate-400 text-sm">Launches the Moltbank Text User Interface (TUI). This is your main entry point.</p>
                                 </div>
                                 <div className="h-px bg-[#982598]/10" />
                                 <div className="group">
@@ -371,7 +371,7 @@ export default function Home() {
                                 </div>
                                 <div className="space-y-4 text-sm text-slate-300">
                                     <p>
-                                        NeuraAgent inherits configuration from the base <code className="text-[#E491C9]">bankr</code> CLI.
+                                        Moltbank inherits configuration from the base <code className="text-[#E491C9]">bankr</code> CLI.
                                         Ensure your environment is set up correctly.
                                     </p>
                                     <div className="bg-[#0a0b1e] p-4 rounded-lg font-mono text-xs border border-[#982598]/10 overflow-x-auto text-slate-300">
@@ -408,7 +408,7 @@ export default function Home() {
             <footer className="py-12 px-4 border-t border-[#982598]/10 bg-[#0f102b] text-center relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-4 opacity-70">
                     <Terminal className="w-5 h-5 text-[#E491C9]" />
-                    <span className="font-bold text-white">NeuraAgent</span>
+                    <span className="font-bold text-white">Moltbank</span>
                 </div>
                 <p className="text-slate-500 text-sm">© 2026 NeuraWorld. Powered by Bankr AI.</p>
             </footer>

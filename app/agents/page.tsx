@@ -170,7 +170,7 @@ export default function AgentsPage() {
                                 {Array.from({ length: 20 }).map((_, i) => (
                                     <div
                                         key={i}
-                                        className="flex-1 bg-gradient-to-t from-red-100 to-red-500 rounded-t-sm"
+                                        className="flex-1 bg-linear-to-t from-red-100 to-red-500 rounded-t-sm"
                                         style={{ height: `${20 + Math.random() * 80}%` }}
                                     />
                                 ))}

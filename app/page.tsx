@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/landing/Navbar";
 import { Terminal, Shield, Cpu, Zap, ArrowRight, Command, ChevronRight, Copy, Check, ArrowUp } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CardSwap, { Card } from "@/components/CardSwap";
 import Image from "next/image";
 
@@ -12,6 +12,16 @@ export default function Home() {
     const [typedText, setTypedText] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const stars = useMemo(
+        () =>
+            Array.from({ length: 20 }, () => ({
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                size: `${Math.random() * 3}px`,
+                duration: `${Math.random() * 3 + 2}s`,
+            })),
+        []
+    );
 
     const fullText = "npm run MOLTNKR";
 
@@ -39,9 +49,10 @@ export default function Home() {
     // Scroll Handler
     useEffect(() => {
         const handleScroll = () => {
-            setShowScrollTop(window.scrollY > 400);
+            const isVisible = window.scrollY > 400;
+            setShowScrollTop((prev) => (prev === isVisible ? prev : isVisible));
         };
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -100,16 +111,16 @@ export default function Home() {
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
                 {/* Simulated Stars */}
-                {[...Array(20)].map((_, i) => (
+                {stars.map((star, i) => (
                     <div
                         key={i}
                         className="absolute rounded-full bg-white opacity-40 animate-pulse"
                         style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            width: `${Math.random() * 3}px`,
-                            height: `${Math.random() * 3}px`,
-                            animationDuration: `${Math.random() * 3 + 2}s`
+                            top: star.top,
+                            left: star.left,
+                            width: star.size,
+                            height: star.size,
+                            animationDuration: star.duration,
                         }}
                     />
                 ))}

@@ -76,7 +76,7 @@ export default function WorldPage() {
                     ))}
                 </section>
 
-                <section className="bg-gradient-to-br from-red-50 to-white rounded-3xl p-8 border border-red-100 shadow-lg">
+                <section className="bg-linear-to-br from-red-50 to-white rounded-3xl p-8 border border-red-100 shadow-lg">
                     <div className="flex items-center justify-between mb-6">
                         <div>
                             <div className="text-xs uppercase tracking-[0.3em] text-gray-400">Cycle</div>

@@ -11,6 +11,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 import gsap from "gsap";
 
@@ -83,24 +84,29 @@ const CardSwap: React.FC<CardSwapProps> = ({
   easing = "elastic",
   children,
 }) => {
-  const config =
-    easing === "elastic"
-      ? {
-          ease: "elastic.out(0.6,0.9)",
-          durDrop: 2,
-          durMove: 2,
-          durReturn: 2,
-          promoteOverlap: 0.9,
-          returnDelay: 0.05,
-        }
-      : {
-          ease: "power1.inOut",
-          durDrop: 0.8,
-          durMove: 0.8,
-          durReturn: 0.8,
-          promoteOverlap: 0.45,
-          returnDelay: 0.2,
-        };
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+
+  const config = useMemo(
+    () =>
+      easing === "elastic"
+        ? {
+            ease: "elastic.out(0.6,0.9)",
+            durDrop: 2,
+            durMove: 2,
+            durReturn: 2,
+            promoteOverlap: 0.9,
+            returnDelay: 0.05,
+          }
+        : {
+            ease: "power1.inOut",
+            durDrop: 0.8,
+            durMove: 0.8,
+            durReturn: 0.8,
+            promoteOverlap: 0.45,
+            returnDelay: 0.2,
+          },
+    [easing]
+  );
 
   const childArr = useMemo(
     () => Children.toArray(children) as ReactElement<CardProps>[],
@@ -117,7 +123,40 @@ const CardSwap: React.FC<CardSwapProps> = ({
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)");
+    const update = () => setShouldAnimate(!media.matches);
+
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
     const total = refs.length;
+    clearInterval(intervalRef.current);
+    tlRef.current?.kill();
+
+    if (!shouldAnimate) {
+      refs.forEach((r, i) => {
+        if (!r.current) return;
+        gsap.set(r.current, {
+          x: i * 24,
+          y: -i * 22,
+          z: 0,
+          xPercent: -50,
+          yPercent: -50,
+          skewY: 0,
+          transformOrigin: "center center",
+          zIndex: total - i,
+          force3D: false,
+        });
+      });
+      return () => {
+        clearInterval(intervalRef.current);
+        tlRef.current?.kill();
+      };
+    }
+
     refs.forEach((r, i) => {
       if (r.current) placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount);
     });
@@ -206,8 +245,11 @@ const CardSwap: React.FC<CardSwapProps> = ({
       };
     }
 
-    return () => clearInterval(intervalRef.current);
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, refs, config]);
+    return () => {
+      clearInterval(intervalRef.current);
+      tlRef.current?.kill();
+    };
+  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, refs, config, shouldAnimate]);
 
   const rendered = childArr.map((child, i) =>
     isValidElement<CardProps>(child)
@@ -226,7 +268,11 @@ const CardSwap: React.FC<CardSwapProps> = ({
   return (
     <div
       ref={container}
-      className="absolute bottom-0 right-0 translate-x-[5%] translate-y-[20%] origin-bottom-right perspective-[900px] overflow-visible max-[768px]:translate-x-[25%] max-[768px]:translate-y-[25%] max-[768px]:scale-[0.75] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%] max-[480px]:scale-[0.55]"
+      className={`absolute bottom-0 right-0 origin-bottom-right overflow-visible ${
+        shouldAnimate
+          ? "translate-x-[5%] translate-y-[20%] perspective-[900px] max-[768px]:translate-x-[25%] max-[768px]:translate-y-[25%] max-[768px]:scale-[0.75] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%] max-[480px]:scale-[0.55]"
+          : "translate-x-[10%] translate-y-[20%] max-[768px]:translate-x-[0%] max-[768px]:translate-y-[12%] max-[768px]:scale-[0.9] max-[480px]:translate-y-[10%] max-[480px]:scale-[0.78]"
+      }`}
       style={{ width, height }}
     >
       {rendered}

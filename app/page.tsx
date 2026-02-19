@@ -151,14 +151,17 @@ export default function Home() {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-                        <span className="block text-white">Your Terminal,</span>
-                        <span className="bg-linear-to-r from-[#982598] to-[#E491C9] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(228,145,201,0.3)]">Reimagined.</span>
+                        <span className="block text-white">Operate AI Systems</span>
+                        <span className="bg-linear-to-r from-[#982598] to-[#E491C9] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(228,145,201,0.3)]">From One Command Layer.</span>
                     </h1>
 
-                    <p className="mx-auto max-w-2xl text-lg text-slate-300 mb-10 leading-relaxed">
-                        Experience the premium <span className="text-[#E491C9] font-semibold">Cyberpunk TUI wrapper</span> for Bankr AI.
-                        <br />
-                        Chat, manage, and deploy - directly from your command line.
+                    <p className="mx-auto max-w-3xl text-lg text-slate-300 mb-6 leading-relaxed">
+                        Built for operators who need clear control across identity, prompts, and agent workflows.
+                        Run high-signal actions from terminal without context switching between fragmented tools.
+                    </p>
+
+                    <p className="mx-auto max-w-2xl text-sm text-slate-400 mb-10 tracking-wide">
+                        Authenticate quickly. Instruct agents confidently. Verify system state in real time.
                     </p>
 
                     {/* Quick Install Bar */}
@@ -180,6 +183,21 @@ export default function Home() {
                         <p className="mt-3 text-xs text-slate-400 uppercase tracking-widest">
                             Run this to start
                         </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
+                        <a
+                            href="#how-it-works"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#E491C9]/50 text-[#E491C9] hover:bg-[#E491C9]/10 transition-colors"
+                        >
+                            See Workflow <ArrowRight className="w-4 h-4" />
+                        </a>
+                        <a
+                            href="#roadmap"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#982598]/40 text-slate-200 hover:bg-[#982598]/15 transition-colors"
+                        >
+                            Product Roadmap
+                        </a>
                     </div>
                 </div>
 
@@ -219,6 +237,160 @@ export default function Home() {
                             </div>
                             <div className="pt-2 text-white">
                                 <span className="text-[#E491C9]">{">"}</span> Welcome back, Operator. Select interaction mode.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative z-10 px-4 sm:px-6 lg:px-8 pb-20">
+                <div className="mx-auto max-w-6xl">
+                    <div className="text-center mb-10">
+                        <p className="text-xs uppercase tracking-[0.35em] text-[#E491C9] mb-4">Who It Is For</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Built for Teams Running Live AI Operations
+                        </h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {[
+                            {
+                                title: "Solo Operators",
+                                desc: "Need one reliable command surface to run identity, prompts, and checks without tool sprawl."
+                            },
+                            {
+                                title: "Dev Teams",
+                                desc: "Need repeatable operational workflows the full team can run with shared command patterns."
+                            },
+                            {
+                                title: "Agent Builders",
+                                desc: "Need fast loops to test behaviors, monitor outcomes, and refine systems under load."
+                            }
+                        ].map((item) => (
+                            <div key={item.title} className="rounded-2xl border border-[#982598]/20 bg-[#0a0b1e]/80 p-7">
+                                <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
+                                <p className="text-sm text-slate-300 leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative z-10 px-4 sm:px-6 lg:px-8 pb-24">
+                <div className="mx-auto max-w-6xl">
+                    <div className="text-center mb-10">
+                        <p className="text-xs uppercase tracking-[0.35em] text-[#E491C9] mb-4">Operational Impact</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Why Teams Stick With This Workflow
+                        </h2>
+                        <p className="text-slate-300 max-w-2xl mx-auto">
+                            Practical outcomes from keeping execution, verification, and diagnostics in one command loop.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="rounded-2xl border border-[#00F0FF]/20 bg-[#00F0FF]/5 p-7 text-center">
+                            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300 mb-3">Setup Time</p>
+                            <p className="text-4xl font-bold text-white mb-2">&lt; 10m</p>
+                            <p className="text-sm text-slate-300">From install to first authenticated operation.</p>
+                        </div>
+                        <div className="rounded-2xl border border-[#E491C9]/25 bg-[#E491C9]/5 p-7 text-center">
+                            <p className="text-xs uppercase tracking-[0.3em] text-[#E491C9] mb-3">Ops Throughput</p>
+                            <p className="text-4xl font-bold text-white mb-2">3x</p>
+                            <p className="text-sm text-slate-300">Faster run cycles versus fragmented manual flow.</p>
+                        </div>
+                        <div className="rounded-2xl border border-emerald-300/25 bg-emerald-500/5 p-7 text-center">
+                            <p className="text-xs uppercase tracking-[0.3em] text-emerald-300 mb-3">Reliability</p>
+                            <p className="text-4xl font-bold text-white mb-2">-40%</p>
+                            <p className="text-sm text-slate-300">Fewer avoidable execution misses after standardized checks.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" className="relative z-10 px-4 sm:px-6 lg:px-8 pb-24">
+                <div className="mx-auto max-w-7xl">
+                    <div className="text-center mb-12">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E491C9] mb-4">How It Works</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Three Steps, One Operator Flow
+                        </h2>
+                        <p className="text-slate-300 max-w-2xl mx-auto">
+                            A practical loop your team can run every day: connect access, send directives, confirm outcomes.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {[
+                            {
+                                step: "01",
+                                title: "Connect Identity",
+                                desc: "Authenticate once through secure login modes, then work from a trusted session context."
+                            },
+                            {
+                                step: "02",
+                                title: "Instruct and Execute",
+                                desc: "Run quick prompts or interactive agent sessions for tasks that need speed and continuity."
+                            },
+                            {
+                                step: "03",
+                                title: "Verify and Iterate",
+                                desc: "Check status, inspect outputs, and keep operations reliable with built-in diagnostics."
+                            }
+                        ].map((item) => (
+                            <div
+                                key={item.step}
+                                className="rounded-2xl border border-[#982598]/20 bg-[#0a0b1e]/80 p-7 shadow-[0_0_30px_rgba(20,24,60,0.5)]"
+                            >
+                                <div className="text-xs font-mono tracking-[0.25em] text-[#E491C9] mb-4">{item.step}</div>
+                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                <p className="text-sm text-slate-300 leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative z-10 px-4 sm:px-6 lg:px-8 pb-24">
+                <div className="mx-auto max-w-6xl">
+                    <div className="text-center mb-12">
+                        <p className="text-xs uppercase tracking-[0.35em] text-[#E491C9] mb-4">Command Output Preview</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Realistic Responses, Not Just Visual Effects
+                        </h2>
+                        <p className="text-slate-300 max-w-2xl mx-auto">
+                            The interface is designed to keep outputs legible during high-tempo operation.
+                        </p>
+                    </div>
+
+                    <div className="grid lg:grid-cols-3 gap-6 font-mono text-sm">
+                        <div className="rounded-2xl border border-[#982598]/25 bg-[#0a0b1e]/90 p-6">
+                            <p className="text-xs uppercase tracking-[0.25em] text-[#E491C9] mb-3">Auth</p>
+                            <p className="text-[#00F0FF] mb-3">&gt; login</p>
+                            <div className="space-y-1 text-slate-300">
+                                <p>[OK] Session established</p>
+                                <p>[OK] Identity loaded</p>
+                                <p className="text-emerald-300">role: operator</p>
+                            </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-[#982598]/25 bg-[#0a0b1e]/90 p-6">
+                            <p className="text-xs uppercase tracking-[0.25em] text-[#E491C9] mb-3">Prompt</p>
+                            <p className="text-[#00F0FF] mb-3">&gt; prompt &quot;summarize active alerts&quot;</p>
+                            <div className="space-y-1 text-slate-300">
+                                <p>[1] latency spike in sector-07</p>
+                                <p>[2] queue depth rising (+12%)</p>
+                                <p className="text-amber-300">action: investigate relay node</p>
+                            </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-[#982598]/25 bg-[#0a0b1e]/90 p-6">
+                            <p className="text-xs uppercase tracking-[0.25em] text-[#E491C9] mb-3">Status</p>
+                            <p className="text-[#00F0FF] mb-3">&gt; whoami</p>
+                            <div className="space-y-1 text-slate-300">
+                                <p>operator_id: nw-ops-214</p>
+                                <p>active_context: neural-link</p>
+                                <p className="text-emerald-300">health: nominal</p>
                             </div>
                         </div>
                     </div>
@@ -305,7 +477,7 @@ export default function Home() {
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             System <span className="text-[#E491C9]">Modules</span>
                         </h2>
-                        <p className="text-slate-400">Advanced capabilities wrapped in a beautiful interface.</p>
+                        <p className="text-slate-400">Built for clarity, control, and repeatable operator workflows.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -333,7 +505,7 @@ export default function Home() {
                             {
                                 icon: <Command className="w-8 h-8 text-[#982598]" />,
                                 title: "Smart Wrappers",
-                                desc: "Intelligent error handling and formatted output for bankr commands."
+                                desc: "Intelligent error handling and formatted output over underlying CLI protocols."
                             },
                             {
                                 icon: <ChevronRight className="w-8 h-8 text-[#00F0FF]" />,
@@ -358,7 +530,7 @@ export default function Home() {
             <section id="install" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-linear-to-b from-[#15173D]/55 to-[#0f102b]/55 backdrop-blur-[1px] relative z-10">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-8">
-                        Ready to <span className="text-[#982598]">Upgrade?</span>
+                        Start in <span className="text-[#982598]">Minutes</span>
                     </h2>
 
                     <div className="bg-[#0a0b1e] rounded-xl border border-[#982598]/30 p-8 text-left shadow-2xl relative overflow-hidden group">
@@ -389,6 +561,48 @@ export default function Home() {
                                 <span>npm run MOLTNKR</span>
                                 <span className="text-xs opacity-70">{copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="roadmap" className="py-24 px-4 sm:px-6 lg:px-8 border-t border-[#982598]/20 bg-[#101235]/55 backdrop-blur-[1px] relative z-10">
+                <div className="mx-auto max-w-6xl">
+                    <div className="text-center mb-14">
+                        <p className="text-xs uppercase tracking-[0.35em] text-[#E491C9] mb-4">Product Direction</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            What Is Live, What Is Next
+                        </h2>
+                        <p className="text-slate-300 max-w-2xl mx-auto">
+                            Clear scope helps users adopt confidently. Here is the current surface area and the next expansion path.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="rounded-2xl border border-emerald-300/25 bg-emerald-500/5 p-8">
+                            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-emerald-300 mb-5">
+                                <span className="h-2 w-2 rounded-full bg-emerald-300" />
+                                Now
+                            </div>
+                            <ul className="space-y-3 text-sm text-slate-200">
+                                <li>Terminal-first command interface for daily operations</li>
+                                <li>Secure authentication and session management</li>
+                                <li>Quick query and interactive prompt modes</li>
+                                <li>Status and configuration diagnostics in one loop</li>
+                            </ul>
+                        </div>
+
+                        <div className="rounded-2xl border border-cyan-300/25 bg-cyan-500/5 p-8">
+                            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-cyan-300 mb-5">
+                                <span className="h-2 w-2 rounded-full bg-cyan-300" />
+                                Next
+                            </div>
+                            <ul className="space-y-3 text-sm text-slate-200">
+                                <li>Shared memory across sessions and team operators</li>
+                                <li>Reusable automation recipes for recurring tasks</li>
+                                <li>Expanded observability for agent performance insights</li>
+                                <li>Smoother handoff between terminal and web control surfaces</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -433,7 +647,7 @@ export default function Home() {
                                         <code className="px-3 py-1 bg-[#0a0b1e] rounded text-[#982598] border border-[#982598]/30">Prompt Agent</code>
                                         <span className="text-xs text-slate-500 font-mono">ACTION</span>
                                     </div>
-                                    <p className="text-slate-400 text-sm">Opens the Neural Link chat interface. Choose between "Quick Query" (single) or "Neural Link" (conversation).</p>
+                                    <p className="text-slate-400 text-sm">Opens the Neural Link chat interface. Choose between &quot;Quick Query&quot; (single) or &quot;Neural Link&quot; (conversation).</p>
                                 </div>
                                 <div className="h-px bg-[#982598]/10" />
                                 <div className="group">
@@ -476,11 +690,11 @@ export default function Home() {
                                 <ul className="space-y-4 text-sm text-slate-400">
                                     <li className="flex gap-3">
                                         <span className="text-red-400 font-bold">!</span>
-                                        <span>If <strong>"Command not found"</strong> occurs, ensure you have run `npm install` first.</span>
+                                        <span>If <strong>&quot;Command not found&quot;</strong> occurs, ensure you have run `npm install` first.</span>
                                     </li>
                                     <li className="flex gap-3">
                                         <span className="text-red-400 font-bold">!</span>
-                                        <span>For <strong>Auth Errors</strong>, try using the "API Key" login method directly in the CLI menu.</span>
+                                        <span>For <strong>Auth Errors</strong>, try using the &quot;API Key&quot; login method directly in the CLI menu.</span>
                                     </li>
                                 </ul>
                             </div>
